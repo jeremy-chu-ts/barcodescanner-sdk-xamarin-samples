@@ -15,7 +15,7 @@ namespace iOSSample
 	{
 		// class-level declarations
 		UIWindow window;
-		ScanditSDKDemoViewController viewController;
+		ScanditSDKSampleViewController viewController;
 		//
 		// This method is invoked when the application has loaded and is ready to run. In this 
 		// method you should instantiate the window, load the UI into it and then make the window
@@ -27,7 +27,7 @@ namespace iOSSample
 		{
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 
-			viewController = new ScanditSDKDemoViewController ();
+			viewController = new ScanditSDKSampleViewController ();
 			window.RootViewController = viewController;
 			window.MakeKeyAndVisible ();
 

@@ -13,7 +13,7 @@ using Scandit.Interfaces;
 using ScanditBarcodePicker.Android;
 using ScanditBarcodePicker.Android.Recognition;
 
-namespace XamarinScanditSDKDemoAndroid
+namespace XamarinScanditSDKSampleAndroid
 {
 	[Activity (Label = "ScanActivity")]			
 	public class ScanActivity : Activity, IOnScanListener, IDialogInterfaceOnCancelListener

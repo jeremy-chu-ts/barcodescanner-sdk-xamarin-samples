@@ -8,8 +8,8 @@ using Foundation;
 
 namespace iOSSample
 {
-	[Register ("ScanditSDKDemoViewController")]
-	partial class ScanditSDKDemoViewController
+	[Register ("ScanditSDKSampleViewController")]
+	partial class ScanditSDKSampleViewController
 	{
 		[Action ("scanButtonClicked:")]
 		partial void scanButtonClicked (Foundation.NSObject sender);

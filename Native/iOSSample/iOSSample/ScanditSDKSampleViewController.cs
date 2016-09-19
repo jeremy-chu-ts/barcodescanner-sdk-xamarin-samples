@@ -7,14 +7,14 @@ using ScanditBarcodeScanner.iOS;
 
 namespace iOSSample
 {
-	public partial class ScanditSDKDemoViewController : UIViewController
+	public partial class ScanditSDKSampleViewController : UIViewController
 	{
 		public static string appKey = "---- ENTER YOUR APP KEY HERE - SIGN UP AT WWW.SCANDIT.COM ----";
 
 		PickerScanDelegate scanDelegate;
 		OverlayCancelDelegate cancelDelegate;
 
-		public ScanditSDKDemoViewController () : base ("ScanditSDKDemoViewController", null)
+		public ScanditSDKSampleViewController () : base ("ScanditSDKSampleViewController", null)
 		{
 			// Set the app key before instantiating the picker.
 			License.SetAppKey(appKey);

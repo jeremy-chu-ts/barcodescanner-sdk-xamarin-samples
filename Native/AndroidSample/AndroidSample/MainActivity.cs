@@ -6,9 +6,9 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
-namespace XamarinScanditSDKDemoAndroid
+namespace XamarinScanditSDKSampleAndroid
 {
-	[Activity (Label = "XamarinScanditSDKDemoAndroid", MainLauncher = true)]
+	[Activity (Label = "XamarinScanditSDKSampleAndroid", MainLauncher = true)]
 	public class MainActivity : Activity
 	{
 
