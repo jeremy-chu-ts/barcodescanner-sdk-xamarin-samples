@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+		xmlns="http://xamarin.com/schemas/2014/forms"
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+		x:Class="ExtendedSample.SettingsPage"
+		xmlns:local="clr-namespace:ExtendedSample;assembly=ExtendedSamples"
+		>
+
+<ContentPage.Resources><ResourceDictionary>
+	<Style TargetType = "Picker">
+		<Setter Property = "Margin" Value = "10, 0, 12, 0" />
+	</Style>
+	<Style TargetType = "Slider">
+		<Setter Property = "Margin" Value = "13" />
+	</Style>
+	<Style TargetType = "Label">
+		<Setter Property = "Margin" Value = "13" />
+	</Style>
+</ResourceDictionary></ContentPage.Resources>
+
+<TableView Intent="Settings" HasUnevenRows="true">
+	<TableRoot>
+		<TableSection Title="Barcode decoder configuration" x:Name="SymbologySection" />
+		<TableSection Title="Scanning area">
+			<SwitchCell x:Name="RestrictedAreaCell" Text="Restricted scanning area" />
+				
+			<TextCell Text="{Binding Value, StringFormat='Hot spot height {0:F2}'}" BindingContext="{x:Reference HotSpotHeightSlider}"/>
+			<ViewCell><Slider Minimum="0" Maximum="0.5" x:Name="HotSpotHeightSlider" /></ViewCell>
+				
+			<TextCell Text="{Binding Value, StringFormat='Hot spot y {0:F2}'}" BindingContext="{x:Reference HotSpotYSlider}"/>
+			<ViewCell><Slider Minimum="0" Maximum="1" x:Name="HotSpotYSlider" /></ViewCell>	
+		</TableSection>
+		<TableSection Title="Viewfinder">
+			<TextCell Text="GUI Style" />
+			<ViewCell><Picker x:Name="GuiStylePicker" Title="Style"><Picker.Items>
+            	<x:String>Rectangle</x:String> 
+            	<x:String>Laser</x:String>
+				<x:String>None</x:String>
+			</Picker.Items></Picker></ViewCell>
+				
+			<TextCell Text="{Binding Value, StringFormat='Width (portrait) {0:F2}'}" BindingContext="{x:Reference ViewFinderPortraitWidth}"/>
+			<ViewCell><Slider Minimum="0" Maximum="1" x:Name="ViewFinderPortraitWidth" /></ViewCell>
+
+			<TextCell Text="{Binding Value, StringFormat='Height (portrait) {0:F2}'}" BindingContext="{x:Reference ViewFinderPortraitHeight}"/>
+			<ViewCell><Slider Minimum="0" Maximum="1" x:Name="ViewFinderPortraitHeight" /></ViewCell>
+
+			<TextCell Text="{Binding Value, StringFormat='Width (landscape) {0:F2}'}" BindingContext="{x:Reference ViewFinderLandscapeWidth}"/>
+			<ViewCell><Slider Minimum="0" Maximum="1" x:Name="ViewFinderLandscapeWidth" /></ViewCell>
+
+			<TextCell Text="{Binding Value, StringFormat='Height (landscape) {0:F2}'}" BindingContext="{x:Reference ViewFinderLandscapeHeight}"/>
+			<ViewCell><Slider Minimum="0" Maximum="1" x:Name="ViewFinderLandscapeHeight" /></ViewCell>
+		</TableSection>
+
+		<TableSection Title="Feedback">
+			<SwitchCell x:Name="BeepCell" Text="Beep"/>
+			<SwitchCell x:Name="VibrateCell" Text="Vibrate"/>
+		</TableSection>
+		<TableSection Title="Torch button">
+			<SwitchCell x:Name="TorchButtonCell" Text="Visible" />
+		</TableSection>
+		<TableSection Title="Camera switch button">
+			<ViewCell><Picker x:Name="CameraButtonPicker" Title="Visible"><Picker.Items>
+            	<x:String>Always</x:String> 
+            	<x:String>Only on tablet</x:String>
+				<x:String>Never</x:String>
+			</Picker.Items></Picker></ViewCell>
+		</TableSection>
+		<TableSection>
+			<ViewCell><Label Text="(*) Only available in Professional and Enterprise Packages" /></ViewCell>
+		</TableSection>
+	</TableRoot>
+</TableView>
+
+</ContentPage>

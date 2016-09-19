@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:ExtendedSample" x:Class="ExtendedSample.ExtendedSamplePage">
+<StackLayout>
+	<Image Margin="15" HorizontalOptions="End" Source="icon_settings_25.png">
+	    <Image.GestureRecognizers>
+    	    <TapGestureRecognizer Tapped="OnSettingsClicked" />
+		</Image.GestureRecognizers>
+	</Image>
+	<StackLayout VerticalOptions="CenterAndExpand">
+		<Button Text="Scan A Barcode" HorizontalOptions="Center" Clicked="OnScanButtonClicked" />
+		<Label x:Name="ResultLabel" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+	</StackLayout>
+</StackLayout>
+</ContentPage>
