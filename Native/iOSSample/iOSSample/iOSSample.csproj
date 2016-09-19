@@ -96,7 +96,7 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="ScanditSDK">
-      <HintPath>../../../lib\/ios-unified/ScanditSDK.dll</HintPath>
+      <HintPath>..\packages\Scandit.BarcodePicker.Xamarin.4.16.1.0\lib\Xamarin.iOS\ScanditSDK.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +105,7 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
