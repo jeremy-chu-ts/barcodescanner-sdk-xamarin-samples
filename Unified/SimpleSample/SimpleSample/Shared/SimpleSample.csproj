@@ -57,10 +57,10 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Scandit.BarcodePicker.Unified.Abstractions">
-      <HintPath>..\..\packages\Scandit.BarcodePicker.Unified.4.17.0.0\lib\portable-net45+win+wp80+MonoTouch10+MonoAndroid10+xamarinmac20+xamarintvos10+xamarinwatchos10+xamarinios10\Scandit.BarcodePicker.Unified.Abstractions.dll</HintPath>
+      <HintPath>..\..\packages\Scandit.BarcodePicker.Unified.4.16.1.0\lib\portable-net45+win+wp80+MonoTouch10+MonoAndroid10+xamarinmac20+xamarintvos10+xamarinwatchos10+xamarinios10\Scandit.BarcodePicker.Unified.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Scandit.BarcodePicker.Unified">
-      <HintPath>..\..\packages\Scandit.BarcodePicker.Unified.4.17.0.0\lib\portable-net45+win+wp80+MonoTouch10+MonoAndroid10+xamarinmac20+xamarintvos10+xamarinwatchos10+xamarinios10\Scandit.BarcodePicker.Unified.dll</HintPath>
+      <HintPath>..\..\packages\Scandit.BarcodePicker.Unified.4.16.1.0\lib\portable-net45+win+wp80+MonoTouch10+MonoAndroid10+xamarinmac20+xamarintvos10+xamarinwatchos10+xamarinios10\Scandit.BarcodePicker.Unified.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

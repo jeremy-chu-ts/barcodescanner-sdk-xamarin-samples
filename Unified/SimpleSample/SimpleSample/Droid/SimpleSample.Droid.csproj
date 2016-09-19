@@ -92,10 +92,10 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="ScanditSDK">
-      <HintPath>..\..\packages\Scandit.BarcodePicker.Xamarin.4.17.0.0\lib\MonoAndroid10\ScanditSDK.dll</HintPath>
+      <HintPath>..\..\packages\Scandit.BarcodePicker.Xamarin.4.16.1.0\lib\MonoAndroid10\ScanditSDK.dll</HintPath>
     </Reference>
     <Reference Include="Scandit.BarcodePicker.Unified">
-      <HintPath>..\..\packages\Scandit.BarcodePicker.Unified.4.17.0.0\lib\MonoAndroid10\Scandit.BarcodePicker.Unified.dll</HintPath>
+      <HintPath>..\..\packages\Scandit.BarcodePicker.Unified.4.16.1.0\lib\MonoAndroid10\Scandit.BarcodePicker.Unified.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
