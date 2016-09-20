@@ -19,7 +19,7 @@ namespace XamarinScanditSDKSampleAndroid
 	public class ScanActivity : Activity, IOnScanListener, IDialogInterfaceOnCancelListener
 	{
 		private BarcodePicker picker;
-		public static string appKey = "---- ENTER YOUR APP KEY HERE - SIGN UP AT WWW.SCANDIT.COM ----";		
+		public static string appKey = "--- ENTER YOUR SCANDIT APP KEY HERE ---";
 
 		protected override void OnCreate (Bundle bundle)
 		{
