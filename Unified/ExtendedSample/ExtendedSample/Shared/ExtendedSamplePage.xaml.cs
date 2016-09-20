@@ -56,9 +56,11 @@ namespace ExtendedSample
 
 		public ExtendedSamplePage()
 		{
+			public static string appKey = "--- ENTER YOUR SCANDIT APP KEY HERE ---";
+
 			InitializeComponent();
 			// must be set before you use the picker for the first time.
-			ScanditService.ScanditLicense.AppKey = "--- ENTER YOUR SCANDIT APP KEY HERE ---";
+			ScanditService.ScanditLicense.AppKey = appKey;
 			// retrieve the actual native barcode picker implementation. The concrete implementation 
 			// will be different depending on the platform the code runs on.
 			_picker = ScanditService.BarcodePicker;
