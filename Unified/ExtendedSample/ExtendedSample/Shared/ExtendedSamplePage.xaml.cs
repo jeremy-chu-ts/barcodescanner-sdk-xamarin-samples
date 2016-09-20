@@ -54,10 +54,10 @@ namespace ExtendedSample
 
 		SettingsPage _settingsPage;
 
+		public static string appKey = "--- ENTER YOUR SCANDIT APP KEY HERE ---";
+
 		public ExtendedSamplePage()
 		{
-			public static string appKey = "--- ENTER YOUR SCANDIT APP KEY HERE ---";
-
 			InitializeComponent();
 			// must be set before you use the picker for the first time.
 			ScanditService.ScanditLicense.AppKey = appKey;

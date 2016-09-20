@@ -59,9 +59,10 @@ namespace SimpleSample
 
 		IBarcodePicker _picker;
 
+		public static string appKey = "--- ENTER YOUR SCANDIT APP KEY HERE ---";
+
 		public SimpleSamplePage()
 		{
-			public static string appKey = "--- ENTER YOUR SCANDIT APP KEY HERE ---";
 
 			InitializeComponent();
 			// must be set before you use the picker for the first time.
