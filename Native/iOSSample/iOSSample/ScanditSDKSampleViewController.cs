@@ -64,10 +64,10 @@ namespace iOSSample
 			// Add delegates for the scan and cancel event. We keep references to the
 			// delegates until the picker is no longer used as the delegates are softly
 			// referenced and can be removed because of low memory.
-			scanDelegate = new PickerScanDelegate(this);
+			scanDelegate = new PickerScanDelegate();
 			picker.ScanDelegate = scanDelegate;
 
-			cancelDelegate = new OverlayCancelDelegate(this);
+			cancelDelegate = new OverlayCancelDelegate(this, picker);
 			picker.OverlayView.CancelDelegate = cancelDelegate;
 
 			PresentViewController (picker, true, null);
@@ -76,12 +76,6 @@ namespace iOSSample
 		}
 
 		public class PickerScanDelegate : ScanDelegate {
-
-			UIViewController presentingViewController;
-
-			public PickerScanDelegate(UIViewController controller) {
-				presentingViewController = controller;
-			}
 
 			public override void DidScan (BarcodePicker picker, IScanSession session) {
 				if (session.NewlyRecognizedCodes.Count > 0) {
@@ -111,14 +105,17 @@ namespace iOSSample
 		public class OverlayCancelDelegate : CancelDelegate {
 
 			UIViewController presentingViewController;
+			BarcodePicker picker;
 
-			public OverlayCancelDelegate(UIViewController controller) {
+			public OverlayCancelDelegate(UIViewController controller, BarcodePicker picker) {
 				presentingViewController = controller;
+				this.picker = picker;
 			}
 
 			public override void DidCancel(ScanOverlay overlay, NSDictionary status) {
 				Console.WriteLine ("Cancel was pressed.");
 				presentingViewController.DismissViewController (true, null);
+				picker.StopScanning();
 			}
 		}
 	}
