@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>iOSSample</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.scandit.xamarin.SimpleSample</string>
+	<string>com.scandit.xamarin.iOSSample</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -37,6 +37,6 @@
 	<key>CFBundleName</key>
 	<string>iOSSample</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Camera Usage Description</string>
+	<string>Scan Barcodes</string>
 </dict>
 </plist>
