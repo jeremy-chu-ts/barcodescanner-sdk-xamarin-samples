@@ -36,5 +36,7 @@
 	<string>Resources/Images.xcassets/AppIcons.appiconset</string>
 	<key>CFBundleName</key>
 	<string>iOSSample</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera Usage Description</string>
 </dict>
 </plist>
