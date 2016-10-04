@@ -12,15 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using Scandit.BarcodePicker.Unified;
+using Scandit.BarcodePicker.Unified.Abstractions;
 using Xamarin.Forms;
 
 namespace SimpleSample
 {
 	public partial class App : Application
-	{
-		public App()
-		{
-			InitializeComponent();
+    {
+        private static string appKey = "--- ENTER YOUR SCANDIT APP KEY HERE ---";
+
+        public App()
+        {
+            // must be set before you use the picker for the first time.
+            ScanditService.ScanditLicense.AppKey = appKey;
+            initSettings();
+
+            InitializeComponent();
 
 			MainPage = new SimpleSamplePage();
 		}
@@ -39,6 +47,30 @@ namespace SimpleSample
 		{
 			// Handle when your app resumes
 		}
-	}
+
+        async void initSettings()
+        {
+            IBarcodePicker picker = ScanditService.BarcodePicker;
+
+            // The scanning behavior of the barcode picker is configured through scan
+            // settings. We start with empty scan settings and enable a very generous
+            // set of symbologies. In your own apps, only enable the symbologies you
+            // actually need.
+            var settings = picker.GetDefaultScanSettings();
+            var symbologiesToEnable = new Symbology[] {
+                Symbology.Qr,
+                Symbology.Ean13,
+                Symbology.Upce,
+                Symbology.Ean8,
+                Symbology.Upca,
+                Symbology.Qr,
+                Symbology.DataMatrix
+            };
+            foreach (var sym in symbologiesToEnable)
+                settings.EnableSymbology(sym, true);
+            await picker.ApplySettingsAsync(settings);
+            // This will open the scanner in full-screen mode. 
+        }
+    }
 }
 
