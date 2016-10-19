@@ -34,17 +34,6 @@ update_assembly_info() {
     find . -name AssemblyInfo.cs.bak | xargs rm --
 }
 
-update_nuspec_version() {
-	xamarin_version_without_suffix=$(remove_version_suffix $XAMARIN_VERSION})
-	find . -name '*.nuspec' \
-    | xargs sed -i.bak \
-         "s/<version>[0-9]\.[0-9][0-9]*\.[0-9].*<\\/version>/<version>${xamarin_version_without_suffix}.0<\\/version>/g"
-	find . -name '*.nuspec' \
-    | xargs sed -i.bak -E \
-        "s/(<dependency id=\"?Scandit\..* version=\"?)[0-9]\.[0-9][0-9]*\.[0-9]*\.[0-9][0-9]*(\"?) /\1${xamarin_version_without_suffix}.0\2 /g"
-    find . -name '*.nuspec.bak' | xargs rm --
-}
-
 update_package_config_versions() {
 	xamarin_version_without_suffix=$(remove_version_suffix $XAMARIN_VERSION})
 	find . -name '*.config' \
@@ -57,10 +46,10 @@ update_project_json_versions() {
 	xamarin_version_without_suffix=$(remove_version_suffix $XAMARIN_VERSION})
 	find . -name '*.json' \
     | xargs sed -i.bak -E \
-        "s/(\"Scandit\.(BarcodePicker|Recognition)\" *: *)\"(.*)\"/\1\"${xamarin_version_without_suffix}\"/g"
+        "s/(\"Scandit\.(BarcodePicker|Recognition|BarcodePicker\.Unified)\" *: *)\"(.*)\"/\1\"${xamarin_version_without_suffix}\"/g"
 	find . -name '*.json' \
     | xargs sed -i.bak -E \
-        "s/(\"Scandit\.(BarcodePicker|Recognition))\/(.*)\"/\1${xamarin_version_without_suffix}\"/g"
+        "s/(\"Scandit\.(BarcodePicker|Recognition|BarcodePicker\.Unified))\/(.*)\"/\1${xamarin_version_without_suffix}\"/g"
     find . -name '*.json.bak' | xargs rm --
 }
 
@@ -82,13 +71,19 @@ update_windows_csproj_files() {
         "s/Scandit\.Recognition\.[0-9]\.[0-9][0-9]*\.[0-9]*\.[0-9][0-9]*/Scandit.Recognition.${xamarin_version_without_suffix}.0/g" \
         $all_csproj_files
     sed -i.bak -E \
-        "s/(<Reference Include=\"ScanditSDK,.*Version=)[0-9]\.[0-9][0-9]*\.[0-9]*\.[0-9][0-9]*/\1${xamarin_version_without_suffix}.0/g" \
+        "s/(<Reference Include=\"Scandit[^,]*,.*Version=)[0-9](\.[0-9][0-9]*)*/\1${xamarin_version_without_suffix}.0/g" \
         $all_csproj_files
     sed -i.bak -E \
-        "s/(<HintPath>.*Scandit\.BarcodePicker\.Xamarin\.)[0-9]\.[0-9][0-9]*\.[0-9]*\.[0-9][0-9]*/\1${xamarin_version_without_suffix}.0/g" \
+        "s/(<Reference Include=\"VideoInputRT.Interop,.*Version=)[0-9](\.[0-9][0-9]*)*/\1${xamarin_version_without_suffix}.0/g" \
         $all_csproj_files
     sed -i.bak -E \
-        "s/(<HintPath>.*Scandit\.BarcodePicker\.Unified\.)[0-9]\.[0-9][0-9]*\.[0-9]*\.[0-9][0-9]*/\1${xamarin_version_without_suffix}.0/g" \
+        "s/(<HintPath>.*Scandit\.BarcodePicker\.Xamarin\.)[0-9](\.[0-9][0-9]*)*/\1${xamarin_version_without_suffix}/g" \
+        $all_csproj_files
+    sed -i.bak -E \
+        "s/(<HintPath>.*Scandit\.BarcodePicker\.Unified\.)[0-9](\.[0-9][0-9]*)*/\1${xamarin_version_without_suffix}/g" \
+        $all_csproj_files
+    sed -i.bak -E \
+        "s/<ReleaseVersion>[0-9](\.[0-9][0-9]*)*<\/ReleaseVersion>/<ReleaseVersion>${xamarin_version_without_suffix}.0<\/ReleaseVersion>/g" \
         $all_csproj_files
     find . -name '*.csproj.bak' | xargs rm --
 }
@@ -101,7 +96,6 @@ update_sln() {
 }
 
 update_assembly_info
-update_nuspec_version
 update_package_config_versions
 update_windows_csproj_files
 update_project_json_versions
