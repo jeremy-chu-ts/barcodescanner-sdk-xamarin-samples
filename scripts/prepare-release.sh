@@ -65,10 +65,10 @@ update_windows_csproj_files() {
 	xamarin_version_without_suffix=$(remove_version_suffix $XAMARIN_VERSION})
     all_csproj_files=$(find . -name '*.csproj')
     sed -i.bak -E \
-        "s/Scandit\.BarcodePicker\.[0-9]\.[0-9][0-9]*\.[0-9]*\.[0-9][0-9]*/Scandit.BarcodePicker.${xamarin_version_without_suffix}.0/g" \
+        "s/Scandit\.BarcodePicker\.[0-9]\.[0-9][0-9]*\.[0-9]*\.[0-9][0-9]*/Scandit.BarcodePicker.${xamarin_version_without_suffix}/g" \
         $all_csproj_files
     sed -i.bak -E \
-        "s/Scandit\.Recognition\.[0-9]\.[0-9][0-9]*\.[0-9]*\.[0-9][0-9]*/Scandit.Recognition.${xamarin_version_without_suffix}.0/g" \
+        "s/Scandit\.Recognition\.[0-9]\.[0-9][0-9]*\.[0-9]*\.[0-9][0-9]*/Scandit.Recognition.${xamarin_version_without_suffix}/g" \
         $all_csproj_files
     sed -i.bak -E \
         "s/(<Reference Include=\"Scandit[^,]*,.*Version=)[0-9](\.[0-9][0-9]*)*/\1${xamarin_version_without_suffix}.0/g" \
