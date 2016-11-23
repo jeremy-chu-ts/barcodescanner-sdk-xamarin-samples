@@ -130,7 +130,7 @@
       <HintPath>..\..\packages\Scandit.Recognition.5.1.0\lib\wpa81\Scandit.Recognition.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="VideoInputRT.Interop, Version=5.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="VideoInputRT.Interop, Version=5.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Scandit.BarcodePicker.5.1.0\lib\wpa81\VideoInputRT.Interop.winmd</HintPath>
       <Private>True</Private>
     </Reference>

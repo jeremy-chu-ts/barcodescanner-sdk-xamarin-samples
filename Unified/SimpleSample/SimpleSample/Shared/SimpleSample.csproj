@@ -11,7 +11,7 @@
     <AssemblyName>SimpleSample</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
-    <ReleaseVersion>4.17</ReleaseVersion>
+    <ReleaseVersion>5.1.0</ReleaseVersion>
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
