@@ -8,11 +8,11 @@ namespace SimpleSample.ViewModels
     public static class ViewModelProvider
     {
         #region Events
-        public static event Action<string> PropertyChanged;
+        // public static event Action<string> PropertyChanged;
         #endregion
 
         #region Fields
-        static bool _isBusy;
+        // static bool _isBusy;
         static List<BaseViewModel> _viewModels = new List<BaseViewModel>();
         #endregion
 
