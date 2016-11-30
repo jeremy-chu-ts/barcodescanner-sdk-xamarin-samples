@@ -184,25 +184,27 @@ namespace ExtendedSample
 			}
 			_scanSettings.RestrictedAreaScanningEnabled = Settings.getBoolSetting(Settings.RestrictedAreaString);
 
-			Double HotSpotHeight = Settings.getDoubleSetting(Settings.HotSpotHeightString);
-			Double HotSpotY = Settings.getDoubleSetting(Settings.HotSpotYString);
+			if (_scanSettings.RestrictedAreaScanningEnabled)
+			{
+				Double HotSpotHeight = Settings.getDoubleSetting(Settings.HotSpotHeightString);
+				Double HotSpotY = Settings.getDoubleSetting(Settings.HotSpotYString);
 
-			_scanSettings.ActiveScanningAreaPortrait = new Rect(
-				0,
-				HotSpotY - 0.5 * HotSpotHeight,
-				1,
-				HotSpotHeight);
+				_scanSettings.ActiveScanningAreaPortrait = new Rect(
+						0,
+						HotSpotY - 0.5 * HotSpotHeight,
+						1,
+						HotSpotHeight);
 
-			_scanSettings.ActiveScanningAreaLandscape = new Rect(
-				0,
-				HotSpotY - 0.5 * HotSpotHeight,
-				1,
-				HotSpotHeight);
+				_scanSettings.ActiveScanningAreaLandscape = new Rect(
+						0,
+						HotSpotY - 0.5 * HotSpotHeight,
+						1,
+						HotSpotHeight);
 
-			_scanSettings.ScanningHotSpot = new Scandit.BarcodePicker.Unified.Point(
-				0.5, 
-				Settings.getDoubleSetting(Settings.HotSpotYString));
-
+				_scanSettings.ScanningHotSpot = new Scandit.BarcodePicker.Unified.Point(
+						0.5,
+						Settings.getDoubleSetting(Settings.HotSpotYString));
+			}
 			_picker.ApplySettingsAsync(_scanSettings);
 		}
 
