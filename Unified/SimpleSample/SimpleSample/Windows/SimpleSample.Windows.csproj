@@ -142,23 +142,23 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Scandit.BarcodePicker, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Scandit.BarcodePicker, Version=5.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Scandit.BarcodePicker.5.0.0\lib\win81\Scandit.BarcodePicker.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Scandit.BarcodePicker.Unified, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Scandit.BarcodePicker.Unified.5.0.0\lib\win81\Scandit.BarcodePicker.Unified.dll</HintPath>
+    <Reference Include="Scandit.BarcodePicker.Unified, Version=5.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Scandit.BarcodePicker.Unified.5.0.1\lib\win81\Scandit.BarcodePicker.Unified.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Scandit.BarcodePicker.Unified.Abstractions, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Scandit.BarcodePicker.Unified.5.0.0\lib\win81\Scandit.BarcodePicker.Unified.Abstractions.dll</HintPath>
+    <Reference Include="Scandit.BarcodePicker.Unified.Abstractions, Version=5.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Scandit.BarcodePicker.Unified.5.0.1\lib\win81\Scandit.BarcodePicker.Unified.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Scandit.Recognition, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Scandit.Recognition, Version=5.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Scandit.Recognition.5.0.0\lib\win81\Scandit.Recognition.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="VideoInputRT.Interop, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="VideoInputRT.Interop, Version=5.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Scandit.BarcodePicker.5.0.0\lib\win81\VideoInputRT.Interop.winmd</HintPath>
       <Private>True</Private>
     </Reference>
