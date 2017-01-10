@@ -50,16 +50,21 @@ namespace ExtendedSample.Helpers
 
 		// Torch button
 		public const string TorchButtonString = "Overlay_TorchButtonVisible";
+		public const string TorchButtonXString = "Overlay_TorchButtonX"; // Unused as not supported yet.
+		public const string TorchButtonYString = "Overlay_TorchButtonY"; // Unused as not supported yet.
 
 		// Camera button
 		public const string CameraButtonString = "Overlay_CameraButton";
 		public const string CameraButtonString_Always = "Overlay_CameraButton_Always";
 		public const string CameraButtonString_Never = "Overlay_CameraButton_Never";
 		public const string CameraButtonString_OnlyTablet = "Overlay_CameraButton_OnlyTablets";
+		public const string CameraButtonXString = "Overlay_CameraButtonX"; // Unused as not supported yet.
+		public const string CameraButtonYString = "Overlay_CameraButtonY"; // Unused as not supported yet.
 
 		// Hotspot
 		public const string RestrictedAreaString = "ScanSettings_RestrictedAreaScanningEnabled";
 		public const string HotSpotHeightString = "ScanOverlay_HotSpotHeight";
+		public const string HotSpotWidthString = "ScanOverlay_HotSpotWidth";
 		public const string HotSpotYString = "ScanOverlay_HotSpotY";
 
 		// ViewFinder
@@ -117,6 +122,21 @@ namespace ExtendedSample.Helpers
 			}
 		}
 
+		public static int getIntSetting(string setting)
+		{
+			return AppSettings.GetValueOrDefault<int>(setting, defaultInt(setting));
+		}
+
+		public static void setIntSetting(string setting, int value)
+		{
+			AppSettings.AddOrUpdateValue<int>(setting, value);
+		}
+
+		private static int defaultInt(string setting)
+		{
+			return 15;
+		}
+
 		public static Double getDoubleSetting(string setting)
 		{
 			return AppSettings.GetValueOrDefault<Double>(setting, defaultDouble(setting));
@@ -132,7 +152,9 @@ namespace ExtendedSample.Helpers
 			switch (setting)
 			{
 				case HotSpotHeightString:
-					return 0.25;
+				return 0.25;
+				case HotSpotWidthString:
+					return 1.0;
 				case HotSpotYString:
 					return scanSettings.ScanningHotSpot.Y;
 					
@@ -149,6 +171,7 @@ namespace ExtendedSample.Helpers
 					throw (new Exception("No such Double setting: " + setting));
 			}
 		}
+
 		public static string getStringSetting(string setting)
 		{
 			return AppSettings.GetValueOrDefault<string>(setting, defaultString(setting));

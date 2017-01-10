@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage
 		xmlns="http://xamarin.com/schemas/2014/forms"
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -20,54 +20,147 @@
 
 <TableView Intent="Settings" HasUnevenRows="true">
 	<TableRoot>
-		<TableSection Title="Barcode decoder configuration" x:Name="SymbologySection" />
-		<TableSection Title="Scanning area">
-			<SwitchCell x:Name="RestrictedAreaCell" Text="Restricted scanning area" />
+		<TableSection Title="Barcode Decoder Configuration" x:Name="SymbologySection" />
+			
+		<TableSection Title="Scanning Area">
 				
-			<TextCell Text="{Binding Value, StringFormat='Hot spot height {0:F2}'}" BindingContext="{x:Reference HotSpotHeightSlider}"/>
-			<ViewCell><Slider Minimum="0" Maximum="0.5" x:Name="HotSpotHeightSlider" /></ViewCell>
+			<SwitchCell x:Name="RestrictedAreaCell" Text="Restrict Scanning Area" />
 				
-			<TextCell Text="{Binding Value, StringFormat='Hot spot y {0:F2}'}" BindingContext="{x:Reference HotSpotYSlider}"/>
-			<ViewCell><Slider Minimum="0" Maximum="1" x:Name="HotSpotYSlider" /></ViewCell>	
+			<ViewCell>
+                <StackLayout Orientation="Vertical">
+	                <StackLayout Padding="5,0,0,-20" Orientation="Horizontal">
+	                    <Label Text="Hot Spot Height"/>
+	                    <Label Text="{Binding Value, StringFormat='{0:F2}'}" 
+								BindingContext="{x:Reference HotSpotHeightSlider}"
+								HorizontalOptions="EndAndExpand" />
+	                </StackLayout>
+					<Slider Minimum="0" Maximum="1" x:Name="HotSpotHeightSlider" />
+                </StackLayout>
+			</ViewCell>
+
+			<ViewCell>
+                <StackLayout Orientation="Vertical">
+	                <StackLayout Padding="5,0,0,-20" Orientation="Horizontal">
+	                    <Label Text="Hot Spot Width"/>
+	                    <Label Text="{Binding Value, StringFormat='{0:F2}'}" 
+								BindingContext="{x:Reference HotSpotWidthSlider}"
+								HorizontalOptions="EndAndExpand" />
+	                </StackLayout>
+					<Slider Minimum="0" Maximum="1" x:Name="HotSpotWidthSlider" />
+                </StackLayout>
+			</ViewCell>
+
+			<ViewCell>
+                <StackLayout Orientation="Vertical">
+	                <StackLayout Padding="5,0,0,-20" Orientation="Horizontal">
+	                    <Label Text="Hot Spot Y"/>
+	                    <Label Text="{Binding Value, StringFormat='{0:F2}'}" 
+								BindingContext="{x:Reference HotSpotYSlider}"
+								HorizontalOptions="EndAndExpand" />
+	                </StackLayout>
+					<Slider Minimum="0" Maximum="1" x:Name="HotSpotYSlider" />
+                </StackLayout>
+			</ViewCell>
+				
 		</TableSection>
+			
 		<TableSection Title="Viewfinder">
-			<TextCell Text="GUI Style" />
-			<ViewCell><Picker x:Name="GuiStylePicker" Title="Style"><Picker.Items>
-            	<x:String>Rectangle</x:String> 
-            	<x:String>Laser</x:String>
-				<x:String>None</x:String>
-			</Picker.Items></Picker></ViewCell>
-				
-			<TextCell Text="{Binding Value, StringFormat='Width (portrait) {0:F2}'}" BindingContext="{x:Reference ViewFinderPortraitWidth}"/>
-			<ViewCell><Slider Minimum="0" Maximum="1" x:Name="ViewFinderPortraitWidth" /></ViewCell>
+			<ViewCell>
+                <StackLayout Padding="5,0,0,0" Orientation="Horizontal">
+					<Label Text="GUI Style" />
+					<Picker x:Name="GuiStylePicker" Title="Style" 
+								HorizontalOptions="EndAndExpand">
+						<Picker.Items>
+		        			<x:String>Rectangle</x:String> 
+		        			<x:String>Laser</x:String>
+							<x:String>None</x:String>
+						</Picker.Items>
+					</Picker>
+				</StackLayout>
+			</ViewCell>
 
-			<TextCell Text="{Binding Value, StringFormat='Height (portrait) {0:F2}'}" BindingContext="{x:Reference ViewFinderPortraitHeight}"/>
-			<ViewCell><Slider Minimum="0" Maximum="1" x:Name="ViewFinderPortraitHeight" /></ViewCell>
+			<ViewCell>
+                <StackLayout Orientation="Vertical">
+	                <StackLayout Padding="5,0,0,-20" Orientation="Horizontal">
+	                    <Label Text="Width (Portrait)"/>
+	                    <Label Text="{Binding Value, StringFormat='{0:F2}'}" 
+								BindingContext="{x:Reference ViewFinderPortraitWidth}"
+								HorizontalOptions="EndAndExpand" />
+	                </StackLayout>
+					<Slider Minimum="0" Maximum="1" x:Name="ViewFinderPortraitWidth" />
+                </StackLayout>
+			</ViewCell>
 
-			<TextCell Text="{Binding Value, StringFormat='Width (landscape) {0:F2}'}" BindingContext="{x:Reference ViewFinderLandscapeWidth}"/>
-			<ViewCell><Slider Minimum="0" Maximum="1" x:Name="ViewFinderLandscapeWidth" /></ViewCell>
+			<ViewCell>
+                <StackLayout Orientation="Vertical">
+	                <StackLayout Padding="5,0,0,-20" Orientation="Horizontal">
+	                    <Label Text="Height (Portrait)"/>
+	                    <Label Text="{Binding Value, StringFormat='{0:F2}'}" 
+								BindingContext="{x:Reference ViewFinderPortraitHeight}"
+								HorizontalOptions="EndAndExpand" />
+	                </StackLayout>
+					<Slider Minimum="0" Maximum="1" x:Name="ViewFinderPortraitHeight" />
+                </StackLayout>
+			</ViewCell>
 
-			<TextCell Text="{Binding Value, StringFormat='Height (landscape) {0:F2}'}" BindingContext="{x:Reference ViewFinderLandscapeHeight}"/>
-			<ViewCell><Slider Minimum="0" Maximum="1" x:Name="ViewFinderLandscapeHeight" /></ViewCell>
+			<ViewCell>
+                <StackLayout Orientation="Vertical">
+	                <StackLayout Padding="5,0,0,-20" Orientation="Horizontal">
+	                    <Label Text="Width (Landscape)"/>
+	                    <Label Text="{Binding Value, StringFormat='{0:F2}'}" 
+								BindingContext="{x:Reference ViewFinderLandscapeWidth}"
+								HorizontalOptions="EndAndExpand" />
+	                </StackLayout>
+					<Slider Minimum="0" Maximum="1" x:Name="ViewFinderLandscapeWidth" />
+                </StackLayout>
+			</ViewCell>
+
+			<ViewCell>
+                <StackLayout Orientation="Vertical">
+	                <StackLayout Padding="5,0,0,-20" Orientation="Horizontal">
+	                    <Label Text="Height (Landscape)"/>
+	                    <Label Text="{Binding Value, StringFormat='{0:F2}'}" 
+								BindingContext="{x:Reference ViewFinderLandscapeHeight}"
+								HorizontalOptions="EndAndExpand" />
+	                </StackLayout>
+					<Slider Minimum="0" Maximum="1" x:Name="ViewFinderLandscapeHeight" />
+                </StackLayout>
+			</ViewCell>
+
 		</TableSection>
 
 		<TableSection Title="Feedback">
 			<SwitchCell x:Name="BeepCell" Text="Beep"/>
 			<SwitchCell x:Name="VibrateCell" Text="Vibrate"/>
 		</TableSection>
-		<TableSection Title="Torch button">
+			
+		<TableSection Title="Torch Button">
+				
 			<SwitchCell x:Name="TorchButtonCell" Text="Visible" />
+				
 		</TableSection>
-		<TableSection Title="Camera switch button">
-			<ViewCell><Picker x:Name="CameraButtonPicker" Title="Visible"><Picker.Items>
-            	<x:String>Always</x:String> 
-            	<x:String>Only on tablet</x:String>
-				<x:String>Never</x:String>
-			</Picker.Items></Picker></ViewCell>
+			
+		<TableSection Title="Camera Switch Button">
+				
+			<ViewCell>
+                <StackLayout Padding="5,0,0,0" Orientation="Horizontal">
+					<Label Text="Visibility" />
+					<Picker x:Name="CameraButtonPicker" Title="Visible" HorizontalOptions="EndAndExpand">
+						<Picker.Items>
+			            	<x:String>Always</x:String> 
+			            	<x:String>Only on tablet</x:String>
+							<x:String>Never</x:String>
+						</Picker.Items>
+					</Picker>
+				</StackLayout>
+			</ViewCell>
+				
 		</TableSection>
+			
 		<TableSection>
 			<ViewCell><Label Text="(*) Only available in Professional and Enterprise Packages" /></ViewCell>
 		</TableSection>
+			
 	</TableRoot>
 </TableView>
 
