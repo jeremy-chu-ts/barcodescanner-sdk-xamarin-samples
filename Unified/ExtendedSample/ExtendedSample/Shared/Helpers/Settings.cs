@@ -44,6 +44,14 @@ namespace ExtendedSample.Helpers
 		public const string SymbologyPrefix = "Sym_";
 		public const string InvSymbologyPrefix = "Inv_Sym_";
 
+		// Checksum
+		public const string MsiPlesseyChecksumString = "MsiPlesseyChecksum";
+		public const string MsiPlesseyChecksumString_None = "None";
+		public const string MsiPlesseyChecksumString_Mod10 = "Mod 10";
+		public const string MsiPlesseyChecksumString_Mod11 = "Mod 11";
+		public const string MsiPlesseyChecksumString_Mod1010 = "Mod 1010";
+		public const string MsiPlesseyChecksumString_Mod1110 = "Mod 1110";
+
 		// Feedback
 		public const string BeepString = "Overlay_BeepEnabled";
 		public const string VibrateString = "Overlay_VibrateEnabled";
@@ -186,6 +194,8 @@ namespace ExtendedSample.Helpers
 		{
 			switch (setting)
 			{
+				case MsiPlesseyChecksumString:
+					return MsiPlesseyChecksumString_Mod10;
 				case CameraButtonString:
 					return CameraButtonString_Always;
 				case GuiStyleString:
