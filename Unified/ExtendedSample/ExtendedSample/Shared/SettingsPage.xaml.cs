@@ -46,10 +46,16 @@ namespace ExtendedSample
 		{
 			// Adds all the symbology Switches (including inverse Switches)
 			// to SymbologySection
+			bool isMsiPlesseyThrough = false;
 			foreach (string setting in Convert.settingToSymbologies.Keys)
 			{
-				addSymbologySwitches(setting);
+				addSymbologySwitches(setting, isMsiPlesseyThrough ? 0 : 1);
+				if (Convert.settingToSymbologies[setting][0] == Symbology.MsiPlessey)
+				{
+					isMsiPlesseyThrough = true;
+				}
 			}
+			initializeMsiPlesseyChecksumPicker();
 
 			// Initialize Feedback
 			initializeSwitch(BeepCell, Settings.BeepString);
@@ -78,12 +84,12 @@ namespace ExtendedSample
 		}
 
 		// Adds a new switch (two incase the symbology has an inverse) to SymbologySection
-		void addSymbologySwitches(String settingString)
+		void addSymbologySwitches(String settingString, int offset)
 		{
 			// add switch for regular symbology
 			SwitchCell cell = new SwitchCell { Text = Convert.settingToDisplay[settingString] };
 			initializeSwitch(cell, settingString);
-			SymbologySection.Add(cell);
+			SymbologySection.Insert(SymbologySection.Count - offset, cell);
 
 			if (Helpers.Settings.hasInvertedSymbology(settingString))
 			{
@@ -92,7 +98,7 @@ namespace ExtendedSample
 				// add switch for inverse symbology
 				SwitchCell invCell = new SwitchCell { Text = Convert.settingToDisplay[invString] };
 				initializeSwitch(invCell, invString);
-				SymbologySection.Add(invCell);
+				SymbologySection.Insert(SymbologySection.Count - offset, invCell);
 
 				// Gray out the inverse symbology switch if the regular symbology is disabled
 				invCell.IsEnabled = Settings.getBoolSetting(settingString);
@@ -141,6 +147,23 @@ namespace ExtendedSample
 			cell.OnChanged += (object sender, ToggledEventArgs e) =>
 				{
 					Settings.setBoolSetting(setting, e.Value);
+					updateScanOverlay();
+					updateScanSettings();
+				};
+		}
+
+		// Bind an the msi plessey checksum picker to the permanent storage
+		// and the currently active settings
+		private void initializeMsiPlesseyChecksumPicker()
+		{
+			MsiPlesseyChecksumPicker.SelectedIndex =
+			        Convert.msiPlesseyChecksumToIndex[Settings.getStringSetting(Settings.MsiPlesseyChecksumString)];
+
+			MsiPlesseyChecksumPicker.SelectedIndexChanged += (object sender, EventArgs e) =>
+				{
+					Settings.setStringSetting(
+						Settings.MsiPlesseyChecksumString,
+						Convert.indexToMsiPlesseyChecksum[MsiPlesseyChecksumPicker.SelectedIndex]);
 					updateScanOverlay();
 					updateScanSettings();
 				};
@@ -197,8 +220,11 @@ namespace ExtendedSample
 					}
 				}
 			}
-			_scanSettings.RestrictedAreaScanningEnabled = Settings.getBoolSetting(Settings.RestrictedAreaString);
 
+			_scanSettings.Symbologies[Symbology.MsiPlessey].Checksums = 
+				Convert.msiPlesseyChecksumToScanSetting[Settings.getStringSetting(Settings.MsiPlesseyChecksumString)];
+
+			_scanSettings.RestrictedAreaScanningEnabled = Settings.getBoolSetting(Settings.RestrictedAreaString);
 			if (_scanSettings.RestrictedAreaScanningEnabled)
 			{
 				Double HotSpotHeight = Settings.getDoubleSetting(Settings.HotSpotHeightString);

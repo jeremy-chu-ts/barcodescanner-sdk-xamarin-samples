@@ -20,7 +20,25 @@
 
 <TableView Intent="Settings" HasUnevenRows="true">
 	<TableRoot>
-		<TableSection Title="Barcode Decoder Configuration" x:Name="SymbologySection" />
+		<TableSection Title="Barcode Decoder Configuration" x:Name="SymbologySection">
+			
+			<ViewCell>
+                <StackLayout Padding="5,0,0,0" Orientation="Horizontal">
+					<Label Text="Msi Plessey Checksum" />
+					<Picker x:Name="MsiPlesseyChecksumPicker" Title="Style" 
+							WidthRequest="100" HorizontalOptions="EndAndExpand">
+						<Picker.Items>
+		        			<x:String>None</x:String> 
+		        			<x:String>Mod10</x:String>
+							<x:String>Mod11</x:String>
+							<x:String>Mod1010</x:String>
+							<x:String>Mod1110</x:String>
+						</Picker.Items>
+					</Picker>
+				</StackLayout>
+			</ViewCell>
+
+		</TableSection>
 			
 		<TableSection Title="Scanning Area">
 				
@@ -69,7 +87,7 @@
                 <StackLayout Padding="5,0,0,0" Orientation="Horizontal">
 					<Label Text="GUI Style" />
 					<Picker x:Name="GuiStylePicker" Title="Style" 
-								HorizontalOptions="EndAndExpand">
+							WidthRequest="100" HorizontalOptions="EndAndExpand">
 						<Picker.Items>
 		        			<x:String>Rectangle</x:String> 
 		        			<x:String>Laser</x:String>
@@ -145,7 +163,8 @@
 			<ViewCell>
                 <StackLayout Padding="5,0,0,0" Orientation="Horizontal">
 					<Label Text="Visibility" />
-					<Picker x:Name="CameraButtonPicker" Title="Visible" HorizontalOptions="EndAndExpand">
+					<Picker x:Name="CameraButtonPicker" Title="Visible"
+							WidthRequest="100" HorizontalOptions="EndAndExpand">
 						<Picker.Items>
 			            	<x:String>Always</x:String> 
 			            	<x:String>Only on tablet</x:String>
