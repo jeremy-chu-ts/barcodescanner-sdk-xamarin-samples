@@ -67,6 +67,7 @@ namespace ExtendedSample
 			// Initialize Hotspot
 			initializeSwitch(RestrictedAreaCell, Settings.RestrictedAreaString);
 			initializeSlider(HotSpotHeightSlider, Settings.HotSpotHeightString);
+			initializeSlider(HotSpotWidthSlider, Settings.HotSpotWidthString);
 			initializeSlider(HotSpotYSlider, Settings.HotSpotYString);
 
 			// Initialize ViewFinder
@@ -74,7 +75,6 @@ namespace ExtendedSample
 			initializeSlider(ViewFinderPortraitHeight, Settings.ViewFinderPortraitHeightString);
 			initializeSlider(ViewFinderLandscapeWidth, Settings.ViewFinderLandscapeWidthString);
 			initializeSlider(ViewFinderLandscapeHeight, Settings.ViewFinderLandscapeHeightString);
-
 		}
 
 		// Adds a new switch (two incase the symbology has an inverse) to SymbologySection
@@ -112,6 +112,21 @@ namespace ExtendedSample
 			slider.ValueChanged += (object sender, ValueChangedEventArgs e) =>
 				{
 					Settings.setDoubleSetting(setting, e.NewValue);
+					updateScanOverlay();
+					updateScanSettings();
+				};
+		}
+
+		// Bind an existing Slider to the permanent storage
+		// and the currently active settings
+		private void initializeIntSlider(Slider slider, string setting)
+		{
+			slider.Value = Settings.getIntSetting(setting);
+			slider.ValueChanged += (object sender, ValueChangedEventArgs e) =>
+				{
+					int newValue = (int) Math.Round(e.NewValue);
+					slider.Value = newValue;
+					Settings.setIntSetting(setting, newValue);
 					updateScanOverlay();
 					updateScanSettings();
 				};
@@ -187,23 +202,16 @@ namespace ExtendedSample
 			if (_scanSettings.RestrictedAreaScanningEnabled)
 			{
 				Double HotSpotHeight = Settings.getDoubleSetting(Settings.HotSpotHeightString);
+				Double HotSpotWidth = Settings.getDoubleSetting(Settings.HotSpotWidthString);
 				Double HotSpotY = Settings.getDoubleSetting(Settings.HotSpotYString);
 
-				_scanSettings.ActiveScanningAreaPortrait = new Rect(
-						0,
-						HotSpotY - 0.5 * HotSpotHeight,
-						1,
-						HotSpotHeight);
-
-				_scanSettings.ActiveScanningAreaLandscape = new Rect(
-						0,
-						HotSpotY - 0.5 * HotSpotHeight,
-						1,
-						HotSpotHeight);
+				Rect restricted = new Rect(0.5f - HotSpotWidth * 0.5f, HotSpotY - 0.5f * HotSpotHeight,
+											 0.5f + HotSpotWidth * 0.5f, HotSpotY + 0.5f * HotSpotHeight);
 
 				_scanSettings.ScanningHotSpot = new Scandit.BarcodePicker.Unified.Point(
-						0.5,
-						Settings.getDoubleSetting(Settings.HotSpotYString));
+						0.5, Settings.getDoubleSetting(Settings.HotSpotYString));
+				_scanSettings.ActiveScanningAreaPortrait = restricted;
+				_scanSettings.ActiveScanningAreaLandscape = restricted;
 			}
 			_picker.ApplySettingsAsync(_scanSettings);
 		}
