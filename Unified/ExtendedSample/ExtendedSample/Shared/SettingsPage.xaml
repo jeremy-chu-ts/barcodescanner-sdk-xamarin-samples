@@ -24,7 +24,7 @@
 			
 			<ViewCell>
                 <StackLayout Padding="5,0,0,0" Orientation="Horizontal">
-					<Label Text="Msi Plessey Checksum" />
+					<Label Text="MSI Plessey Checksum" />
 					<Picker x:Name="MsiPlesseyChecksumPicker" Title="Style" 
 							WidthRequest="100" HorizontalOptions="EndAndExpand">
 						<Picker.Items>
