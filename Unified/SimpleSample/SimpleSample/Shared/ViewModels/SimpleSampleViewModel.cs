@@ -18,26 +18,38 @@ namespace SimpleSample.ViewModels
 
         public string RecognizedCode
         {
-            get
-            {
-                return (_recognizedCode == null) ? "" : "Code scanned: " + _recognizedCode;
-            }
+            get { return _recognizedCode; }
 
             set
             {
-                _recognizedCode = value;
+				if (_recognizedCode != value)
+				{
+					_recognizedCode = value;
+					OnPropertyChanged("RecognizedCode");
+				}	
             }
         }
 
         public SimpleSampleViewModel()
         {
-            ScanditService.BarcodePicker.DidScan += BarcodePickerOnDidScan;
+            ScanditService.BarcodePicker.DidScan += OnCodesScanned;
+			this.RecognizedCode = "No code scanned";
         }
 
-        private async void BarcodePickerOnDidScan(ScanSession session)
+        private void OnCodesScanned(ScanSession session)
         {
-            RecognizedCode = session.NewlyRecognizedCodes.LastOrDefault()?.Data;
-		    await ScanditService.BarcodePicker.StopScanningAsync();
+			// this method is invoked from an internal thread. To perform any UI work, you will 
+			// need to use Device Device.BeginInvokeOnMainThread(() => ...), to move execution to them 
+			// main thread.
+
+			// It is preferred to call stop scanning on the session, because it makes sure that the 
+			// scanning immediately stops and no further codes are scanned.
+			session.StopScanning();
+
+			var firstCode = session.NewlyRecognizedCodes.First();
+			var text = String.Format("{0} ({1})", firstCode.Data, firstCode.SymbologyString.ToUpper());
+			this.RecognizedCode = text;
+
         }
 
         public ICommand StartScanningCommand => new Command(async () => await StartScanning());
