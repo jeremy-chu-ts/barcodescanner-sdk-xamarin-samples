@@ -232,7 +232,7 @@ namespace ExtendedSample
 				Double HotSpotY = Settings.getDoubleSetting(Settings.HotSpotYString);
 
 				Rect restricted = new Rect(0.5f - HotSpotWidth * 0.5f, HotSpotY - 0.5f * HotSpotHeight,
-											 0.5f + HotSpotWidth * 0.5f, HotSpotY + 0.5f * HotSpotHeight);
+										   HotSpotWidth, HotSpotHeight);
 
 				_scanSettings.ScanningHotSpot = new Scandit.BarcodePicker.Unified.Point(
 						0.5, Settings.getDoubleSetting(Settings.HotSpotYString));
