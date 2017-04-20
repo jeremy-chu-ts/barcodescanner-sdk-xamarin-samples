@@ -11,7 +11,6 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Scandit;
-using Scandit.Interfaces;
 using ScanditBarcodePicker.Android;
 using ScanditBarcodePicker.Android.Recognition;
 
