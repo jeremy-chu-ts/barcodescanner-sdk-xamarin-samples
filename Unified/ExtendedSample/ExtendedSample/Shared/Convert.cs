@@ -159,7 +159,7 @@ namespace ExtendedSample
 		// list of Settings that are enabled by default
 		public static readonly string[] EnabledSettings = {
 			"Sym_Ean13Upca", "Sym_Ean13Upca", "Sym_Ean8", "Sym_Upce", "Sym_Code39", "Sym_Code128",
-			"Sym_Interleaved2Of5", "Sym_Qr", "Sym_DataMatrix", Settings.BeepString, Settings.VibrateString,
+			"Sym_Interleaved2Of5", "Sym_Qr", "Sym_DataMatrix", Settings.BeepString,
 			Settings.TorchButtonString
 		};
 
