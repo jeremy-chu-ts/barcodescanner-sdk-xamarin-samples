@@ -89,7 +89,7 @@ namespace ExtendedSample.Helpers
 		};
 
 		public const string GuiStyleString = "Overlay_GuiStyle";
-		public const string GuiStyleString_Rectangle = "Overlay_GuiStyle_Rectangle";
+		public const string GuiStyleString_Rectangle = "Overlay_GuiStyle_Frame";
 		public const string GuiStyleString_Laser = "Overlay_GuiStyle_Laser";
 		public const string GuiStyleString_None = "Overlay_GuiStyle_None";
 
