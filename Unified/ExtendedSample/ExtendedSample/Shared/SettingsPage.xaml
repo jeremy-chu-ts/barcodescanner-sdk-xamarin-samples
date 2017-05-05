@@ -89,7 +89,7 @@
 					<Picker x:Name="GuiStylePicker" Title="Style" 
 							WidthRequest="100" HorizontalOptions="EndAndExpand">
 						<Picker.Items>
-		        			<x:String>Rectangle</x:String> 
+		        			<x:String>Frame</x:String> 
 		        			<x:String>Laser</x:String>
 							<x:String>None</x:String>
 						</Picker.Items>
@@ -162,9 +162,9 @@
 				
 			<ViewCell>
                 <StackLayout Padding="5,0,0,0" Orientation="Horizontal">
-					<Label Text="Visibility" />
+					<Label Text="Visible" />
 					<Picker x:Name="CameraButtonPicker" Title="Visible"
-							WidthRequest="100" HorizontalOptions="EndAndExpand">
+							WidthRequest="125" HorizontalOptions="EndAndExpand">
 						<Picker.Items>
 			            	<x:String>Always</x:String> 
 			            	<x:String>Only on tablet</x:String>
@@ -175,11 +175,6 @@
 			</ViewCell>
 				
 		</TableSection>
-			
-		<TableSection>
-			<ViewCell><Label Text="(*) Only available in Professional and Enterprise Packages" /></ViewCell>
-		</TableSection>
-			
 	</TableRoot>
 </TableView>
 
