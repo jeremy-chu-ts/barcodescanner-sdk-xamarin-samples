@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>iOSSample</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.scandit.xamarin.iOSSample</string>
+	<string>com.scandit.iOSSample</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
