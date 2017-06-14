@@ -221,6 +221,8 @@ namespace ExtendedSample
 				}
 			}
 
+			_scanSettings.MaxNumberOfCodesPerFrame = 2;
+
 			_scanSettings.Symbologies[Symbology.MsiPlessey].Checksums = 
 				Convert.msiPlesseyChecksumToScanSetting[Settings.getStringSetting(Settings.MsiPlesseyChecksumString)];
 
