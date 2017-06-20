@@ -130,7 +130,7 @@ namespace ExtendedSample
 			slider.Value = Settings.getIntSetting(setting);
 			slider.ValueChanged += (object sender, ValueChangedEventArgs e) =>
 				{
-					int newValue = (int) Math.Round(e.NewValue);
+					int newValue = (int)Math.Round(e.NewValue);
 					slider.Value = newValue;
 					Settings.setIntSetting(setting, newValue);
 					updateScanOverlay();
@@ -157,7 +157,7 @@ namespace ExtendedSample
 		private void initializeMsiPlesseyChecksumPicker()
 		{
 			MsiPlesseyChecksumPicker.SelectedIndex =
-			        Convert.msiPlesseyChecksumToIndex[Settings.getStringSetting(Settings.MsiPlesseyChecksumString)];
+					Convert.msiPlesseyChecksumToIndex[Settings.getStringSetting(Settings.MsiPlesseyChecksumString)];
 
 			MsiPlesseyChecksumPicker.SelectedIndexChanged += (object sender, EventArgs e) =>
 				{
@@ -174,13 +174,13 @@ namespace ExtendedSample
 		private void initializeCameraPicker()
 		{
 			CameraButtonPicker.SelectedIndex =
-                  Convert.cameraButtonToIndex[Settings.getStringSetting(Settings.CameraButtonString)];
+				  Convert.cameraButtonToIndex[Settings.getStringSetting(Settings.CameraButtonString)];
 
 			CameraButtonPicker.SelectedIndexChanged += (object sender, EventArgs e) =>
 				{
 					Settings.setStringSetting(
 						Settings.CameraButtonString,
-				        Convert.indexToCameraButton[CameraButtonPicker.SelectedIndex]);
+						Convert.indexToCameraButton[CameraButtonPicker.SelectedIndex]);
 					updateScanOverlay();
 					updateScanSettings();
 				};
@@ -221,10 +221,9 @@ namespace ExtendedSample
 				}
 			}
 
-			_scanSettings.MaxNumberOfCodesPerFrame = 2;
-
-			_scanSettings.Symbologies[Symbology.MsiPlessey].Checksums = 
+			_scanSettings.Symbologies[Symbology.MsiPlessey].Checksums =
 				Convert.msiPlesseyChecksumToScanSetting[Settings.getStringSetting(Settings.MsiPlesseyChecksumString)];
+
 
 			_scanSettings.RestrictedAreaScanningEnabled = Settings.getBoolSetting(Settings.RestrictedAreaString);
 			if (_scanSettings.RestrictedAreaScanningEnabled)
@@ -241,7 +240,14 @@ namespace ExtendedSample
 				_scanSettings.ActiveScanningAreaPortrait = restricted;
 				_scanSettings.ActiveScanningAreaLandscape = restricted;
 			}
+
+			//make sure we always scan ean 13 + 2
+			_scanSettings.EnableSymbology(Symbology.Ean13, true);
+			_scanSettings.EnableSymbology(Symbology.TwoDigitAddOn, true);
+			_scanSettings.MaxNumberOfCodesPerFrame = 2;
+
 			_picker.ApplySettingsAsync(_scanSettings);
+
 		}
 
 		// reads the values needed for ScanOverlay from the Settings class

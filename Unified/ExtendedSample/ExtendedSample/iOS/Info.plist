@@ -2,16 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDisplayName</key>
-	<string>ExtendedSample</string>
-	<key>CFBundleName</key>
-	<string>ExtendedSample</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.scandit.extendedsample</string>
+	<string>com.rascal.asa</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>1.2</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -44,5 +40,7 @@
 	<string>Assets.xcassets/AppIcons.appiconset</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Scan Barcodes</string>
+	<key>CFBundleName</key>
+	<string>ScanditExample</string>
 </dict>
 </plist>

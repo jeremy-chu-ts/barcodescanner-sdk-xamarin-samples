@@ -18,6 +18,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using HockeyApp.iOS;
 
 namespace ExtendedSample.iOS
 {
@@ -30,7 +31,15 @@ namespace ExtendedSample.iOS
 
 			LoadApplication(new App());
 
+			// in your FinishedLaunching-method add:
+			var manager = BITHockeyManager.SharedHockeyManager;
+			manager.Configure("e9ca173e79a41f0a33530df3d08693b");
+		  	//manager.Authenticator.AuthenticateInstallation(); // This line is obsolete in crash only builds
+			manager.DisableMetricsManager = true;
+			manager.StartManager();
+
 			return base.FinishedLaunching(app, options);
+
 		}
 	}
 }
